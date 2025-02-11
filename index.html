@@ -109,6 +109,7 @@
 </head>
 <body>
     <div class="container" id="welcome-screen">
+        <button onclick="toggleMusic()">Pausar/Reproducir Música</button>
         <h1>Hola Preciosa 💖</h1>
         <p>Espero te encuentres bien, hoy vengo a hacerte una pregunta, ya que eres muy especial para mi...</p>
         <p>Si quieres saber cuál es, pulsa el botón.</p>
@@ -163,6 +164,15 @@
             btn.style.position = "absolute";
             btn.style.left = x + "px";
             btn.style.top = y + "px";
+        }
+
+        function toggleMusic() {
+            let music = document.getElementById("background-music");
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
         }
 
         // Generar corazones en el fondo
