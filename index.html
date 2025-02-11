@@ -79,10 +79,18 @@
     <script>
         function mueveNo() {
             let btn = document.getElementById("no-btn");
-            let maxX = window.innerWidth - btn.offsetWidth - 10;
-            let maxY = window.innerHeight - btn.offsetHeight - 10;
-            let x = Math.random() * maxX;
-            let y = Math.random() * maxY;
+            let maxX = window.innerWidth - btn.offsetWidth - 20;
+            let maxY = window.innerHeight - btn.offsetHeight - 20;
+            let x, y;
+
+            if (window.innerWidth <= 480) {
+                x = Math.random() * (maxX / 2) + (maxX / 4);
+                y = Math.random() * (maxY / 2) + (maxY / 4);
+            } else {
+                x = Math.random() * maxX;
+                y = Math.random() * maxY;
+            }
+
             btn.style.left = x + "px";
             btn.style.top = y + "px";
         }
