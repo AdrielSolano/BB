@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres ser mi San Valentín?</title>
+    <title>San Valentín</title>
     <style>
         body {
             display: flex;
@@ -15,6 +15,7 @@
             text-align: center;
             overflow: hidden;
             margin: 0;
+            position: relative;
         }
 
         .container {
@@ -24,24 +25,13 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 400px;
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
             color: #ff3366;
             font-size: 24px;
-        }
-
-        h6 {
-            color: #ff3366;
-            font-size: 12px;
-        }   
-
-        .buttons {
-            margin-top: 20px;
-            position: relative;
-            height: 50px;
-            justify-content: center;
-            right: 30px;
         }
 
         button {
@@ -59,33 +49,52 @@
             background-color: #cc0044;
         }
 
-        #no-btn {
-            position: absolute;
+        .hidden {
+            display: none;
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
+        /* Corazones animados */
+        .heart {
+            position: absolute;
+            color: #ff3366;
+            font-size: 24px;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
             }
-            button {
-                font-size: 16px;
-                padding: 8px 16px;
-                justify-content: center;
+            100% {
+                transform: translateY(-10vh) scale(0.5);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="welcome-screen">
+        <h1>Hola Preciosa 💖</h1>
+        <p>Espero te encuentres bien, hoy vengo a hacer una pregunta...</p>
+        <p>Si quieres saber cuál es, pulsa el botón.</p>
+        <button onclick="showQuestion()">Pregunta</button>
+    </div>
+
+    <div class="container hidden" id="question-screen">
         <h1>¿Quieres ser mi San Valentín? ❤️</h1>
-        <h6>pulsa no plis</h6>
         <div class="buttons">
             <button onclick="alert('¡Sabía que dirías que sí! 💖')">Sí</button>
             <button id="no-btn" onmouseover="mueveNo()">No</button>
         </div>
-    </div>    
+    </div>
 
     <script>
+        function showQuestion() {
+            document.getElementById("welcome-screen").classList.add("hidden");
+            document.getElementById("question-screen").classList.remove("hidden");
+        }
+
         function mueveNo() {
             let btn = document.getElementById("no-btn");
             let maxX = window.innerWidth - btn.offsetWidth - 20;
@@ -103,6 +112,25 @@
             btn.style.left = x + "px";
             btn.style.top = y + "px";
         }
+
+        // Generar corazones en el fondo
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+                heart.style.fontSize = Math.random() * 20 + 10 + "px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+
+        setInterval(createHearts, 1000);
     </script>
 </body>
 </html>
