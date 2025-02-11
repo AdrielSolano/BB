@@ -76,6 +76,32 @@
                 opacity: 0;
             }
         }
+
+        /* Estilos para el ramo de margaritas y fotos */
+        .surprise {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .surprise img {
+            width: 100px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 45%;
+            max-width: 150px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -90,8 +116,21 @@
         <h1>¿Quieres ser mi San Valentín? ❤️</h1>
         <h6>Pulsa no Plis</h6>
         <div class="buttons">
-            <button onclick="alert('¡Sabía que dirías que sí! 💖')">Sí</button>
+            <button onclick="showSurprise()">Sí</button>
             <button id="no-btn" onmouseover="mueveNo()">No</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="surprise-screen">
+        <h1>¡Gracias, mi amor! 🌼💖</h1>
+        <div class="surprise">
+            <img src="ramo-de-margaritas.png" alt="Ramo de Margaritas">
+        </div>
+        <div class="gallery">
+            <img src="img/1.jpg" alt="Foto 1">
+            <img src="img/2.jpg" alt="Foto 2">
+            <img src="img/3.jpg" alt="Foto 3">
+            <img src="img/4.jpg" alt="Foto 4">
         </div>
     </div>
 
@@ -99,6 +138,11 @@
         function showQuestion() {
             document.getElementById("welcome-screen").classList.add("hidden");
             document.getElementById("question-screen").classList.remove("hidden");
+        }
+
+        function showSurprise() {
+            document.getElementById("question-screen").classList.add("hidden");
+            document.getElementById("surprise-screen").classList.remove("hidden");
         }
 
         function mueveNo() {
