@@ -114,7 +114,7 @@
 
     <div class="container hidden" id="question-screen">
         <h1>¿Quieres ser mi San Valentín? ❤️</h1>
-        <h6>Pulsa primero no Plis</h6>
+        <h6>Pulsa no Plis</h6>
         <div class="buttons">
             <button onclick="showSurprise()">Sí</button>
             <button id="no-btn" onmouseover="mueveNo()">No</button>
@@ -127,10 +127,10 @@
             <img src="ramo-de-margaritas.png" alt="Ramo de Margaritas">
         </div>
         <div class="gallery">
-            <img src="img/1.jpg" alt="Foto 1">
-            <img src="img/2.jpg" alt="Foto 2">
-            <img src="img/3.jpg" alt="Foto 3">
-            <img src="img/4.jpg" alt="Foto 4">
+            <img src="foto1.jpg" alt="Foto 1">
+            <img src="foto2.jpg" alt="Foto 2">
+            <img src="foto3.jpg" alt="Foto 3">
+            <img src="foto4.jpg" alt="Foto 4">
         </div>
     </div>
 
@@ -141,26 +141,22 @@
         }
 
         function showSurprise() {
+            alert('¡Sabía que dirías que sí! 💖');
             document.getElementById("question-screen").classList.add("hidden");
             document.getElementById("surprise-screen").classList.remove("hidden");
         }
 
         function mueveNo() {
             let btn = document.getElementById("no-btn");
-            let maxX = window.innerWidth - btn.offsetWidth - 20;
-            let maxY = window.innerHeight - btn.offsetHeight - 20;
-            let x, y;
-
-            if (window.innerWidth <= 480) {
-                x = Math.random() * (maxX / 2) + (maxX / 4);
-                y = Math.random() * (maxY / 2) + (maxY / 4);
-            } else {
-                x = Math.random() * maxX;
-                y = Math.random() * maxY;
+            if (window.innerWidth > 480) { // Solo mover el botón en pantallas grandes
+                let maxX = window.innerWidth - btn.offsetWidth - 20;
+                let maxY = window.innerHeight - btn.offsetHeight - 20;
+                let x = Math.random() * maxX;
+                let y = Math.random() * maxY;
+                btn.style.position = "absolute";
+                btn.style.left = x + "px";
+                btn.style.top = y + "px";
             }
-
-            btn.style.left = x + "px";
-            btn.style.top = y + "px";
         }
 
         // Generar corazones en el fondo
