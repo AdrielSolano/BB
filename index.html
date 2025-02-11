@@ -95,6 +95,9 @@
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .gallery img {
@@ -148,8 +151,11 @@
 
         function mueveNo() {
             let btn = document.getElementById("no-btn");
-            let x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
-            let y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+            let container = document.getElementById("question-screen");
+            let maxX = container.offsetWidth - btn.offsetWidth - 10;
+            let maxY = container.offsetHeight - btn.offsetHeight - 10;
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
             btn.style.position = "absolute";
             btn.style.left = x + "px";
             btn.style.top = y + "px";
