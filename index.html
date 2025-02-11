@@ -120,7 +120,7 @@
         <h6>Pulsa no Plis</h6>
         <div class="buttons">
             <button onclick="showSurprise()">Sí</button>
-            <button id="no-btn" onmouseover="mueveNo()">No</button>
+            <button id="no-btn" onmouseover="mueveNo()" ontouchstart="mueveNo()">No</button>
         </div>
     </div>
 
@@ -152,8 +152,8 @@
         function mueveNo() {
             let btn = document.getElementById("no-btn");
             let container = document.getElementById("question-screen");
-            let maxX = container.offsetWidth - btn.offsetWidth - 10;
-            let maxY = container.offsetHeight - btn.offsetHeight - 10;
+            let maxX = container.clientWidth - btn.clientWidth - 10;
+            let maxY = container.clientHeight - btn.clientHeight - 10;
             let x = Math.random() * maxX;
             let y = Math.random() * maxY;
             btn.style.position = "absolute";
