@@ -124,13 +124,13 @@
     <div class="container hidden" id="surprise-screen">
         <h1>¡Gracias, mi amor! 🌼💖</h1>
         <div class="surprise">
-            <img src="img/5.png" alt="Ramo de Margaritas">
+            <img src="ramo-de-margaritas.png" alt="Ramo de Margaritas">
         </div>
         <div class="gallery">
-            <img src="img/1.jpg" alt="Foto 1">
-            <img src="img/2.jpg" alt="Foto 2">
-            <img src="img/3.jpg" alt="Foto 3">
-            <img src="img/4.jpg" alt="Foto 4">
+            <img src="foto1.jpg" alt="Foto 1">
+            <img src="foto2.jpg" alt="Foto 2">
+            <img src="foto3.jpg" alt="Foto 3">
+            <img src="foto4.jpg" alt="Foto 4">
         </div>
     </div>
 
@@ -148,15 +148,11 @@
 
         function mueveNo() {
             let btn = document.getElementById("no-btn");
-            if (window.innerWidth > 480) { // Solo mover el botón en pantallas grandes
-                let maxX = window.innerWidth - btn.offsetWidth - 20;
-                let maxY = window.innerHeight - btn.offsetHeight - 20;
-                let x = Math.random() * maxX;
-                let y = Math.random() * maxY;
-                btn.style.position = "absolute";
-                btn.style.left = x + "px";
-                btn.style.top = y + "px";
-            }
+            let x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
+            let y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+            btn.style.position = "absolute";
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
         }
 
         // Generar corazones en el fondo
